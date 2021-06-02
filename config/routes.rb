@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :books
   resources :users,only: [:show,:index,:edit,:update]
   post "favorites/:book_id/create" => "favorites#create"
+  post "favorites/:book_id/destroy" => "favorites#destroy"
   
 end
