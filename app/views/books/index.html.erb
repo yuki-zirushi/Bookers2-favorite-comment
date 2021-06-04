@@ -32,9 +32,9 @@
           </tr>
         </thead>
         <tbody>
-        <% books.each do |book| %>
+        <% @books.each do |book| %>
           <tr>
-          <%= render 'index', books: @books %>
+          <%= render 'index', book: book %>
           </tr>
         <% end %>
         </tbody>
