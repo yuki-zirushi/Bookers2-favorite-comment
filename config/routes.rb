@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
   
   root 'homes#top'
   get 'home/about' => 'homes#about'
-  devise_for :users
-  resources :books
-  resources :users,only: [:show,:index,:edit,:update]
-  post "favorites/:book_id/create" => "favorites#create"
-  post "favorites/:book_id/destroy" => "favorites#destroy"
+  
+  resources :books, only: [:index, :show, :edit, :create, :destroy, :update] do
+    resource :favorites, only: [:create, :destroy]
+  end
+  
+  resources :users, only: [:show, :index, :edit, :update]
   
 end
